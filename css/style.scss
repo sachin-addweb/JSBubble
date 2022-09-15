@@ -1,0 +1,62 @@
+$color-white: #fff;
+$color-black: #000;
+
+body {
+  margin: 0;
+  padding: 100px 20px;
+}
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.item-list {
+  max-width: 950px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition-duration: 0.5s;
+    z-index: 0;
+
+    &.circle {
+      border-radius: 50%;
+      text-align: center;
+    }
+    &.grid-item--large {
+      z-index: 99999999;
+    }
+    * {
+      color: $color-white;
+      margin: 0;
+    }
+    span {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+  }
+}
+
+// Circle BG Colors
+$count: 100;
+@for $i from 1 through $count {
+  .item {
+    &:nth-child(#{$i}) {
+      background-color: rgb(random(255), random(255), random(255));
+    }
+  }
+  .gradient .item {
+    &:nth-child(#{$i}) {
+      $random-color: rgb(random(255), random(255), random(255));
+      background: linear-gradient(
+        $random-color 0%,
+        lighten($random-color, 30%) 100%
+      );
+    }
+  }
+}
